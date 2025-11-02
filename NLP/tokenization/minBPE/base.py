@@ -10,7 +10,7 @@ some concessions are made for simplicity.
 
 import unicodedata
 from typing import Dict, List
-from utils.helper import render_token
+from .utils.helper import render_token
 
 class Tokenizer:
     """
@@ -36,7 +36,7 @@ class Tokenizer:
         """
         Builds a vocab from the merges 
         """
-        vocab = {idx: bytes(idx) for idx in range(256)}
+        vocab = {idx: bytes([idx]) for idx in range(256)}
         for (p1, p2), idx in self.merges.items():
             vocab[idx] = vocab[p1] + vocab[p2]
         
